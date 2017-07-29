@@ -14,10 +14,6 @@ namespace Rating
     {
         private const int KFACTOR = 16;
 
-        private const int WIN = 1;
-        private const double DRAW = 0.5;
-        private const int LOST = 0;
-
         protected int _ratingA;
         protected int _ratingB;
 
@@ -91,9 +87,9 @@ namespace Rating
 
         // Protected & private functions begin here
         /**
-         * @param int $ratingA The Rating of Player A
-         * @param int $ratingB The Rating of Player B
-         * @return array
+         * @param int ratingA The Rating of Player A
+         * @param int ratingB The Rating of Player B
+         * @return List<int>
          */
         protected List<int> _getExpectedScores(int ratingA, int ratingB)
         {
@@ -108,14 +104,15 @@ namespace Rating
 
             return expectedScoresList;
         }
+
         /**
-         * @param int $ratingA The Rating of Player A
-         * @param int $ratingB The Rating of Player A
-         * @param int $expectedA The expected score of Player A
-         * @param int $expectedB The expected score of Player B
-         * @param int $scoreA The score of Player A
-         * @param int $scoreB The score of Player B
-         * @return array
+         * @param int ratingA The Rating of Player A
+         * @param int ratingB The Rating of Player A
+         * @param int expectedA The expected score of Player A
+         * @param int expectedB The expected score of Player B
+         * @param int scoreA The score of Player A
+         * @param int scoreB The score of Player B
+         * @return List<int>
          */
         protected List<int> _getNewRatings(int ratingA, int ratingB, int expectedA, int expectedB, int scoreA, int scoreB)
         {
