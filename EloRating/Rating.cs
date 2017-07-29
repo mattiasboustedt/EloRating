@@ -78,8 +78,8 @@ namespace Rating
         {
             List<int> newRatingsList = new List<int>
             {
-                _ratingA,
-                _ratingB
+                _newRatingA,
+                _newRatingB
             };
 
             return newRatingsList;
