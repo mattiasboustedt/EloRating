@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 /**
  * This class calculates ratings based on the Elo system used in chess.
@@ -93,8 +94,8 @@ namespace Rating
          */
         protected List<int> _getExpectedScores(int ratingA, int ratingB)
         {
-            int expectedScoreA = 1 / (1 + (10^( ratingB - ratingA) / 400) );
-            int expectedScoreB = 1 / (1 + (10^( ratingA - ratingB) / 400) );
+            int expectedScoreA = 1 / (1 + (IntPow(10, ( ratingB - ratingA) / 400)) );
+            int expectedScoreB = 1 / (1 + (IntPow(10, ( ratingA - ratingB) / 400)) );
 
             List<int> expectedScoresList = new List<int>
             {
@@ -126,6 +127,11 @@ namespace Rating
             };
 
             return newRatingList;
+        }
+
+        public int IntPow(int x, int pow)
+        {
+            return (int)Math.Pow(x, pow);
         }
     }
 }
