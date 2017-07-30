@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 
 /**
- * This class calculates ratings based on the Elo system used in chess.
+ * This class calculates ratings based on the Elo system.
  *
  * @author Mattias Boustedt
- * @translated from https://github.com/Chovanec/elo-rating by Michael Chovanec
+ * @based on https://github.com/Chovanec/elo-rating by Michael Chovanec
  * @license Creative Commons Attribution 4.0 International License
  */
 
@@ -13,7 +13,15 @@ namespace Rating
 {
     public class Rating
     {
-        private const int KFACTOR = 16;
+        /**
+         * FIDE (the World Chess Foundation), gives players with less than 30 played games a K-factor of 25. 
+         * Normal players get a K-factor of 15 and pro's get a K-factor of 10.  (Pro = 2400 rating)
+         * Once you reach a pro status, you're K-factor never changes, even if your rating drops.
+         * 
+         * For now set to 15 for everyone.
+         */
+
+        private const int KFACTOR = 15;
 
         protected double _ratingA;
         protected double _ratingB;
