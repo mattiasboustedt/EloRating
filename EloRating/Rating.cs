@@ -15,17 +15,17 @@ namespace Rating
     {
         private const int KFACTOR = 16;
 
-        protected int _ratingA;
-        protected int _ratingB;
+        protected double _ratingA;
+        protected double _ratingB;
 
-        protected int _scoreA;
-        protected int _scoreB;
+        protected double _scoreA;
+        protected double _scoreB;
 
-        protected int _expectedA;
-        protected int _expectedB;
+        protected double _expectedA;
+        protected double _expectedB;
 
-        protected int _newRatingA;
-        protected int _newRatingB;
+        protected double _newRatingA;
+        protected double _newRatingB;
 
         /**
          * Constructor function which does all the maths and stores the results ready
@@ -37,7 +37,7 @@ namespace Rating
          * @param int scoreB Score of B
          */
 
-        public Rating(int ratingA, int ratingB, int scoreA, int scoreB)
+        public Rating(double ratingA, double ratingB, double scoreA, double scoreB)
         {
             setNewSettings(ratingA, ratingB, scoreA, scoreB);
         }
@@ -52,18 +52,18 @@ namespace Rating
         * @return self
         */
 
-        public Rating setNewSettings(int ratingA, int ratingB, int scoreA, int scoreB)
+        public Rating setNewSettings(double ratingA, double ratingB, double scoreA, double scoreB)
         {
             _ratingA = ratingA;
             _ratingB = ratingB;
             _scoreA = scoreA;
             _scoreB = scoreB;
 
-            List<int> expectedScores = _getExpectedScores(_ratingA, _ratingB);
+            List<double> expectedScores = _getExpectedScores(_ratingA, _ratingB);
             _expectedA = expectedScores[0];
             _expectedB = expectedScores[1];
 
-            List<int> newRatingsList = _getNewRatings(_ratingA, _ratingB, _expectedA, _expectedB, _scoreA, _scoreB);
+            List<double> newRatingsList = _getNewRatings(_ratingA, _ratingB, _expectedA, _expectedB, _scoreA, _scoreB);
             _newRatingA = newRatingsList[0];
             _newRatingB = newRatingsList[1];
 
@@ -73,11 +73,11 @@ namespace Rating
         /**
          * Retrieve the calculated data.
          *
-         * @return List<int> A list containing the new ratings for A and B.
+         * @return List<double> A list containing the new ratings for A and B.
         */
-        public List<int> getNewRatings()
+        public List<double> getNewRatings()
         {
-            List<int> newRatingsList = new List<int>
+            List<double> newRatingsList = new List<double>
             {
                 _newRatingA,
                 _newRatingB
@@ -92,12 +92,12 @@ namespace Rating
          * @param int ratingB The Rating of Player B
          * @return List<int>
          */
-        protected List<int> _getExpectedScores(int ratingA, int ratingB)
+        protected List<double> _getExpectedScores(double ratingA, double ratingB)
         {
-            int expectedScoreA = 1 / (1 + (IntPow(10, ( ratingB - ratingA) / 400)) );
-            int expectedScoreB = 1 / (1 + (IntPow(10, ( ratingA - ratingB) / 400)) );
+            double expectedScoreA = 1 / (1 + (Math.Pow(10, ( ratingB - ratingA) / 400)) );
+            double expectedScoreB = 1 / (1 + (Math.Pow(10, ( ratingA - ratingB) / 400)) );
 
-            List<int> expectedScoresList = new List<int>
+            List<double> expectedScoresList = new List<double>
             {
                 expectedScoreA,
                 expectedScoreB
@@ -115,23 +115,18 @@ namespace Rating
          * @param int scoreB The score of Player B
          * @return List<int>
          */
-        protected List<int> _getNewRatings(int ratingA, int ratingB, int expectedA, int expectedB, int scoreA, int scoreB)
+        protected List<double> _getNewRatings(double ratingA, double ratingB, double expectedA, double expectedB, double scoreA, double scoreB)
         {
-            int newRatingA = ratingA + (Rating.KFACTOR * ( scoreA - expectedA ) );
-            int newRatingB = ratingB + (Rating.KFACTOR * ( scoreB - expectedB ) );
+            double newRatingA = ratingA + (Rating.KFACTOR * ( scoreA - expectedA ) );
+            double newRatingB = ratingB + (Rating.KFACTOR * ( scoreB - expectedB ) );
 
-            List<int> newRatingList = new List<int>
+            List<double> newRatingList = new List<double>
             {
                 newRatingA,
                 newRatingB
             };
 
             return newRatingList;
-        }
-
-        public int IntPow(int x, int pow)
-        {
-            return (int)Math.Pow(x, pow);
         }
     }
 }
