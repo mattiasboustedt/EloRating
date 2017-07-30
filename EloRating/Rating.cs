@@ -51,7 +51,7 @@ namespace Rating
 
         public Rating(double ratingA, double ratingB, double scoreA, double scoreB)
         {
-            setNewSettings(ratingA, ratingB, scoreA, scoreB);
+            SetNewSettings(ratingA, ratingB, scoreA, scoreB);
         }
 
         /**
@@ -64,7 +64,7 @@ namespace Rating
         * @return self
         */
 
-        public Rating setNewSettings(double ratingA, double ratingB, double scoreA, double scoreB)
+        public Rating SetNewSettings(double ratingA, double ratingB, double scoreA, double scoreB)
         {
             _ratingA = ratingA;
             _ratingB = ratingB;
@@ -87,7 +87,7 @@ namespace Rating
          *
          * @return List<double> A list containing the new ratings for A and B.
         */
-        public List<double> getNewRatings()
+        public List<double> GetNewRatings()
         {
             List<double> newRatingsList = new List<double>
             {
