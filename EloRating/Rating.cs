@@ -23,6 +23,10 @@ namespace Rating
 
         private const int KFACTOR = 15;
 
+        public const double WIN = 1;
+        public const double LOOSE = 0;
+        public const double DRAW = 0.5;
+
         protected double _ratingA;
         protected double _ratingB;
 
@@ -39,10 +43,10 @@ namespace Rating
          * Constructor function which does all the maths and stores the results ready
          * for retrieval.
          *
-         * @param int ratingA Current rating of A
-         * @param int ratingB Current rating of B
-         * @param int scoreA Score of A
-         * @param int scoreB Score of B
+         * @param double ratingA Current rating of A
+         * @param double ratingB Current rating of B
+         * @param double scoreA Score of A
+         * @param double scoreB Score of B
          */
 
         public Rating(double ratingA, double ratingB, double scoreA, double scoreB)
@@ -53,10 +57,10 @@ namespace Rating
         /**
         * Set new input data.
         *
-        * @param int ratingA Current rating of A
-        * @param int ratingB Current rating of B
-        * @param int scoreA Score of A
-        * @param int scoreB Score of B
+        * @param double ratingA Current rating of A
+        * @param double ratingB Current rating of B
+        * @param double scoreA Score of A
+        * @param double scoreB Score of B
         * @return self
         */
 
@@ -96,9 +100,9 @@ namespace Rating
 
         // Protected & private functions begin here
         /**
-         * @param int ratingA The Rating of Player A
-         * @param int ratingB The Rating of Player B
-         * @return List<int>
+         * @param double ratingA The Rating of Player A
+         * @param double ratingB The Rating of Player B
+         * @return List<double>
          */
         protected List<double> _getExpectedScores(double ratingA, double ratingB)
         {
@@ -115,13 +119,13 @@ namespace Rating
         }
 
         /**
-         * @param int ratingA The Rating of Player A
-         * @param int ratingB The Rating of Player A
-         * @param int expectedA The expected score of Player A
-         * @param int expectedB The expected score of Player B
-         * @param int scoreA The score of Player A
-         * @param int scoreB The score of Player B
-         * @return List<int>
+         * @param double ratingA The Rating of Player A
+         * @param double ratingB The Rating of Player A
+         * @param double expectedA The expected score of Player A
+         * @param double expectedB The expected score of Player B
+         * @param double scoreA The score of Player A
+         * @param double scoreB The score of Player B
+         * @return List<double>
          */
         protected List<double> _getNewRatings(double ratingA, double ratingB, double expectedA, double expectedB, double scoreA, double scoreB)
         {
